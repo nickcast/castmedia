@@ -18,7 +18,7 @@ let navbar = document.querySelector('.navbar');
 
 leftTxt = document.querySelector('.first__dtext')
 rightTxt = document.querySelector('.second__dtext')
-
+has_scrolled = false
 
 window.onscroll = () => {
   // Star
@@ -38,9 +38,26 @@ window.onscroll = () => {
     let transformValueRight = -1*(window.pageYOffset/2-326)
     leftTxt.style.transform = "translateX(" + transformValueLeft + "px)";
     rightTxt.style.transform = "translateX(" + transformValueRight + "px)";
-  } else if(window.pageYOffset <= 1270){
-    
+  }else if(window.pageYOffset >= 1050){
+    if(has_scrolled==false){
+      show__txt()
+      has_scrolled = true
+    } else {
+      
+    }
   }
+}
+
+const show__txt = () => {
+  anime({
+    targets: ".lower__ctext",
+    translateY: [100, 0],
+    translateZ: 0,
+    opacity: [0, 1],
+    easing: 'easeOutExpo',
+    duration: 1000,
+    delay: (el, i) => 400+40*i,  
+  })
 }
 
 // Smooth Scrolling Behaviour

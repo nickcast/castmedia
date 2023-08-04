@@ -324,27 +324,28 @@ a{
 
 .collab__outer{
 	width:100%;
-	position:sticky;
-	top:0px;
+	height:1800px;
 }
 
 .collab__inner{
+	position:sticky;
+	top:0px;
 	height:100vh;
 	display:flex;
 	flex-direction: column;
 	align-items: center;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .double__words{
 	display:flex;
 }
 .first__dtext{
-	left: -326px;
+	left: -322px;
 	color:white;
     position: relative;
 }
 .second__dtext{
-	right: -326px;
+	right: -322px;
 	color:white;
     position: relative;
 }
@@ -352,12 +353,36 @@ a{
 	color:#ffffff;
 }
 
+.first__dtext, .second__dtext{
+	font-size: calc(25px + 50*(100vw - 415px)/1025);
+}
+
 .upper_ctext{
 	padding-top: 50px;
 }
+.lower__collab{
+	display: flex;
+    justify-content: center;
+}
 .lower__ctext{
 	padding-bottom: 50px;
+	opacity:0;
+	width: 50%;
+    text-align: center;
+    font-size: calc(10px + 30*(100vw - 415px)/1025);
 }
+
+/* @media(max-width:600px){
+	.lower__ctext{
+		font-size:calc(20px + 30*(100vw - 415px)/1025);
+	}
+	.first__dtext{
+		left: -202px;
+	}
+	.second__dtext{
+		right:-202px;
+	}
+} */
 
 /* Services */
 
@@ -365,7 +390,6 @@ a{
 	width:100%;
 	height:auto;
 	background:#ffffff;
-	margin-top:1000px;
 }
 .services__inner{
 	padding: 20px 50px;
