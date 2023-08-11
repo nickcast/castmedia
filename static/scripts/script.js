@@ -5,12 +5,35 @@ const load = () => {
   }, 300);
 }
 
+const isElementInViewPort = (element) => {
+  let rect = element.getBoundingClientRect();
+  console.log("The bounding Rect of element is ", rect)
+  let viewPortBottom = window.innerHeight || document.documentElement.clientHeight; 
+  let viewPortRight = window.innerWidth || document.documentElement.clientWidth;
+  let isTopInViewPort = rect.top >= 0,
+      isLeftInViewPort = rect.left >= 0,
+      isBottomInViewPort = rect.bottom <= viewPortBottom,
+      isRightInViewPort = rect.right <= viewPortRight;
+ return (isTopInViewPort && isLeftInViewPort && isBottomInViewPort && isRightInViewPort);
+}
+
+const animate__service = (target, dur) => {
+  anime({
+    targets: target,
+    translateY: [100, 0],
+    translateZ: 0,
+    opacity: [0, 1],
+    easing: 'easeOutExpo',
+    duration: dur,
+    delay: (el, i) => 400+40*i,  
+  })
+}
+
 // Star Rotation
 
 const star = document.querySelector('.star__img')
 
 // Nav
-
 let prev_Position = window.pageYOffset;
 let navbar = document.querySelector('.navbar');
 
@@ -19,11 +42,14 @@ let navbar = document.querySelector('.navbar');
 leftTxt = document.querySelector('.first__dtext')
 rightTxt = document.querySelector('.second__dtext')
 has_scrolled = false
+service_scrolled = false
 
 window.onscroll = () => {
   // Star
+
     star.style.transform = "rotate(" + window.pageYOffset/2 + "deg)";
   // Nav
+
   let cur_Position = window.pageYOffset;
   if(prev_Position > cur_Position){
     navbar.style.top='0';
@@ -32,6 +58,7 @@ window.onscroll = () => {
   }
   console.log(cur_Position);
   prev_Position = cur_Position;
+
   // Scroll Animation
   if(window.pageYOffset >= 700 && window.pageYOffset <= 1270){
     let transformValueLeft = window.pageYOffset/2-326
@@ -45,6 +72,26 @@ window.onscroll = () => {
     } else {
       
     }
+  }
+
+  // Services Animation 
+  
+  if(isElementInViewPort(document.querySelector('.service__title'))){
+    if(service_scrolled == false){
+      animate__service('.service__title', 1000)
+      animate__service('.ser1', 1200)
+      animate__service('.ser2', 1400)
+      animate__service('.ser3', 1650)
+      animate__service('.ser4', 1800)
+      animate__service('.ser5', 2000)
+      animate__service('.ser6', 2200)
+
+
+      service_scrolled=true
+    } else {
+
+    }
+    
   }
 }
 
@@ -68,16 +115,6 @@ var container = document.querySelector(".body__wrapper");
 
 var height = container.clientHeight;
 document.body.style.height = height + "px";
-
-// gsap.to(container, {
-//   y: -(height - document.documentElement.clientHeight),
-//   scrollTrigger: {
-//     trigger: document.body,
-//     start: "top top",
-//     end: "bottom bottom",
-//     scrub: 1
-//   }
-// });
 
 // Ham Menu Animation
 
@@ -121,5 +158,83 @@ anime({
   delay: (el, i) => 400+40*i,  
 })
 
-// easeOutExpo
+// Marquee Second 
+
+if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
+  
+}else{
+  const el = document.querySelector(".wide__marquee");
+
+  // Widths
+  let elWidth = el.offsetWidth;
+  let windowWidth = window.innerWidth;
+  
+  // Mouse
+  let mouseX = 0;
+  let prevMouseX = 0;
+  
+  // Value we want to animate to
+  let skewTarget = 0;
+  let translateTarget = 0;
+  
+  // Value we use to animate
+  let skewWithEasing = 0;
+  let translateWithEasing = 0;
+  
+  // Determines how quick the animation/interpolation goes
+  let skewEasingFactor = 0.1;
+  let translateEasingFactor = 0.05;
+  
+  // Events
+  window.addEventListener("mousemove", handleMouseMove);
+  window.addEventListener("resize", handleWindowResize);
+  
+  // Functions
+  function handleMouseMove(e) {
+    mouseX = e.pageX;
+  }
+  
+  function handleWindowResize(e) {
+    elWidth = el.offsetWidth;
+    windowWidth = window.innerWidth;
+  }
+  
+  function lerp(start, end, factor) {
+    return (1 - factor) * start + factor * end;
+  }
+  
+  function animateMe() {
+    // Get difference between current and previous mouse position
+    skewTarget = mouseX - prevMouseX;
+    prevMouseX = mouseX;
+  
+    // Calc how much we need to translate our el
+    translateTarget = (elWidth - windowWidth) / windowWidth * mouseX * -1;
+  
+    // Ease between start and target values (skew)
+    skewWithEasing = lerp(skewWithEasing, skewTarget, skewEasingFactor);
+  
+    // Limit our skew to a range of 75 degrees so it doesn't "over-skew"
+    skewWithEasing = Math.min(Math.max(parseInt(skewWithEasing), -75), 75);
+  
+    // Ease between start and target values (translate)
+    translateWithEasing = lerp(
+    translateWithEasing,
+    translateTarget,
+    translateEasingFactor);
+  
+  
+    el.style.transform = `
+      translateX(${translateWithEasing}px)
+      skewX(${skewWithEasing}deg)
+    `;
+  
+    // RAF
+    window.requestAnimationFrame(animateMe);
+  }
+  
+  window.requestAnimationFrame(animateMe);
+  
+  
+}
 
