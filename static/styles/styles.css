@@ -78,6 +78,7 @@ body::-webkit-scrollbar {
 	transition: top 0.3s;
 	top:-90px;
 	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
 }
 
 .nav__wrapper{
@@ -388,10 +389,10 @@ body::-webkit-scrollbar {
 
 @media(max-width:700px){
 	.first__dtext{
-		left:-210px;
+		left:-160px;
 	}
 	.second__dtext{
-		right:-210px;
+		right:-160px;
 	}
 }
 

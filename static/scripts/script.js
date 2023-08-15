@@ -7,7 +7,6 @@ const load = () => {
 
 const isElementInViewPort = (element) => {
   let rect = element.getBoundingClientRect();
-  console.log("The bounding Rect of element is ", rect)
   let viewPortBottom = window.innerHeight || document.documentElement.clientHeight; 
   let viewPortRight = window.innerWidth || document.documentElement.clientWidth;
   let isTopInViewPort = rect.top >= 0,
@@ -46,7 +45,6 @@ service_scrolled = false
 
 window.onscroll = () => {
   // Star
-
     star.style.transform = "rotate(" + window.pageYOffset/2 + "deg)";
   // Nav
 
@@ -56,23 +54,40 @@ window.onscroll = () => {
   } else {
     navbar.style.top='-90px';
   }
-  console.log(cur_Position);
   prev_Position = cur_Position;
 
   // Scroll Animation
-  if(window.pageYOffset >= 700 && window.pageYOffset <= 1270){
-    let transformValueLeft = window.pageYOffset/2-326
-    let transformValueRight = -1*(window.pageYOffset/2-326)
-    leftTxt.style.transform = "translateX(" + transformValueLeft + "px)";
-    rightTxt.style.transform = "translateX(" + transformValueRight + "px)";
-  }else if(window.pageYOffset >= 1050){
-    if(has_scrolled==false){
-      show__txt()
-      has_scrolled = true
-    } else {
-      
+  let viewportWidth = window.innerWidth;
+  if(viewportWidth >= 700){
+    if(window.pageYOffset >= 700 && window.pageYOffset <= 1270){
+      let transformValueLeft = window.pageYOffset/2-326
+      let transformValueRight = -1*(window.pageYOffset/2-326)
+      leftTxt.style.transform = "translateX(" + transformValueLeft + "px)";
+      rightTxt.style.transform = "translateX(" + transformValueRight + "px)";
+    }else if(window.pageYOffset >= 1050){
+      if(has_scrolled==false){
+        show__txt()
+        has_scrolled = true
+      } else {
+        
+      }
+    }
+  }else if(viewportWidth < 700){
+    if(window.pageYOffset >= 800 && window.pageYOffset <= 1160){
+      let transformValueLeft = window.pageYOffset/2.5-320
+      let transformValueRight = -1*(window.pageYOffset/2.5-320)
+      leftTxt.style.transform = "translateX(" + transformValueLeft + "px)";
+      rightTxt.style.transform = "translateX(" + transformValueRight + "px)";
+    }else if(window.pageYOffset >= 850){
+      if(has_scrolled==false){
+        show__txt()
+        has_scrolled = true
+      } else {
+        
+      }
     }
   }
+  
 
   // Services Animation 
   
@@ -106,15 +121,6 @@ const show__txt = () => {
     delay: (el, i) => 400+40*i,  
   })
 }
-
-// Smooth Scrolling Behaviour
-
-gsap.registerPlugin(ScrollTrigger);
-
-var container = document.querySelector(".body__wrapper");
-
-var height = container.clientHeight;
-document.body.style.height = height + "px";
 
 // Ham Menu Animation
 
@@ -159,11 +165,16 @@ anime({
 })
 
 // Marquee Second 
+const el = document.querySelector(".wide__marquee");
+let hrs = document.querySelectorAll('.marquee__hr')
 
 if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)){
-  
+  el.style.display = 'none'
+  for (let index = 0; index < hrs.length; index++) {
+    let hr = hrs[index];
+    hr.style.display = 'none'
+  }
 }else{
-  const el = document.querySelector(".wide__marquee");
 
   // Widths
   let elWidth = el.offsetWidth;
