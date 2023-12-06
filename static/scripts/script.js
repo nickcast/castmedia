@@ -130,6 +130,7 @@ ham__btn = document.querySelector('.toggle')
 
 ham__btn.addEventListener('click', ()=>{
   nav__list.classList.toggle('active')
+  ham__btn.classList.toggle('opened')
 })
 
 // Anime.js

@@ -2,12 +2,12 @@
 
 @font-face {
 	font-family: 'main';
-	src: url(/static/fonts/GT-Haptik-Medium\ \(1\).otf);
+	src: url(/static/fonts/AtHaussStd-Regular.e820449.otf);
 }
 
 @font-face {
 	font-family: 'secondary';
-	src: url(/static/fonts/GT-Haptik-Light.otf);
+	src: url(/static/fonts/AtHaussStd-Light.b86ae27.otf);
 }
 /* Root */
 
@@ -20,6 +20,7 @@
 
 html{
 	background:var(--main);
+	scroll-behavior: smooth;
 }
 
 *{
@@ -99,7 +100,6 @@ body::-webkit-scrollbar {
 }
 
 .nav__link{
-	letter-spacing: 3px;
     font-weight: 500;
 	font-size:smaller;
     color: white;
@@ -135,6 +135,8 @@ body::-webkit-scrollbar {
     right: 25px;
     top: 47px;
     width: 22px;
+	transition: all 0.5s;
+
 }
 
 .toggle::after{
@@ -145,6 +147,16 @@ body::-webkit-scrollbar {
     right: 25px;
     top: 42px;
     width: 22px;
+	transition: all 0.5s;
+
+}
+.toggle.opened::before{
+	top:45px;
+	transform: rotate(135deg);
+}
+.toggle.opened::after{
+	top:45px;
+	transform: rotate(-135deg);
 }
 
 @media(max-width:800px){
@@ -573,7 +585,6 @@ footer{
     height: auto;
 }
 .footer__href{
-	letter-spacing: 3px;
     font-weight: 500;
     font-size: smaller;
     color: white;
