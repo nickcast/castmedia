@@ -45,7 +45,7 @@ service_scrolled = false
 
 window.onscroll = () => {
   // Star
-    star.style.transform = "rotate(" + window.pageYOffset/2 + "deg)";
+    star.style.transform = "rotate(" + 30*(window.pageYOffset/2)/100 + "deg)";
   // Nav
 
   let cur_Position = window.pageYOffset;
@@ -73,6 +73,7 @@ window.onscroll = () => {
       }
     }
   }else if(viewportWidth < 700){
+    console.log(cur_Position);
     if(window.pageYOffset >= 800 && window.pageYOffset <= 1160){
       let transformValueLeft = window.pageYOffset/2.5-320
       let transformValueRight = -1*(window.pageYOffset/2.5-320)
@@ -94,12 +95,12 @@ window.onscroll = () => {
   if(isElementInViewPort(document.querySelector('.service__title'))){
     if(service_scrolled == false){
       animate__service('.service__title', 1000)
-      animate__service('.ser1', 1200)
-      animate__service('.ser2', 1400)
-      animate__service('.ser3', 1650)
-      animate__service('.ser4', 1800)
-      animate__service('.ser5', 2000)
-      animate__service('.ser6', 2200)
+      animate__service('.ser1', 1500)
+      animate__service('.ser2', 2000)
+      animate__service('.ser3', 2500)
+      animate__service('.ser4', 3000)
+      animate__service('.ser5', 3500)
+      animate__service('.ser6', 4000)
 
 
       service_scrolled=true
@@ -250,3 +251,13 @@ if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigat
   
 }
 
+// Hero CTA
+const arrow = document.querySelector('.cta__img');
+
+const rot = () => {
+    arrow.style.transform = "rotate(-90deg)";
+};
+
+const rot_back = () => {
+  arrow.style.transform = "rotate(0deg)";
+};
