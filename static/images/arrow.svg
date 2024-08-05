@@ -1,1 +1,9 @@
-<svg id="e6Rk7wOgyfQ1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 300 300" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" width="300" height="300"><rect width="300" height="31.924741" rx="0" ry="0" transform="matrix(.965453 0 0 1.193745 10.18205 261.89)" fill="#d2cfcf" stroke-width="0"/><rect width="33.95775" height="300" rx="0" ry="0" transform="matrix(1.122294 0 0 0.966667 261.88942 9.99995)" fill="#d2cfcf" stroke-width="0"/><rect width="38.11" height="300" rx="0" ry="0" transform="matrix(.707107-.707107 0.909567 0.909567 0 26.94784)" fill="#d2cfcf" stroke-width="0"/></svg>
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" text-rendering="geometricPrecision" shape-rendering="geometricPrecision">
+
+ <g>
+  <title>Layer 1</title>
+  <rect x="1.03578" y="0.8377" id="svg_1" stroke-width="0" fill="#ffffff" transform="matrix(0.965453 0 0 1.19375 10.182 261.89)" height="31.92474" width="300"/>
+  <rect x="0.89103" y="0" id="svg_2" stroke-width="0" fill="#ffffff" transform="matrix(1.12229 0 0 0.966667 261.889 9.99995)" height="300" width="33.95775"/>
+  <rect x="0.70711" y="0.54971" id="svg_3" stroke-width="0" fill="#ffffff" transform="matrix(0.707107 -0.707107 0.909567 0.909567 0 26.9478)" height="300" width="38.11"/>
+ </g>
+</svg>

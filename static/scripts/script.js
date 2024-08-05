@@ -46,19 +46,10 @@ service_scrolled = false
 window.onscroll = () => {
   // Star
     star.style.transform = "rotate(" + 30*(window.pageYOffset/2)/100 + "deg)";
-  // Nav
-
-  let cur_Position = window.pageYOffset;
-  if(prev_Position > cur_Position){
-    navbar.style.top='0';
-  } else {
-    navbar.style.top='-90px';
-  }
-  prev_Position = cur_Position;
 
   // Scroll Animation
   let viewportWidth = window.innerWidth;
-  if(viewportWidth >= 700){
+  if(viewportWidth >= 800){
     if(window.pageYOffset >= 700 && window.pageYOffset <= 1270){
       let transformValueLeft = window.pageYOffset/2-326
       let transformValueRight = -1*(window.pageYOffset/2-326)
@@ -72,14 +63,13 @@ window.onscroll = () => {
         
       }
     }
-  }else if(viewportWidth < 700){
-    console.log(cur_Position);
-    if(window.pageYOffset >= 800 && window.pageYOffset <= 1160){
-      let transformValueLeft = window.pageYOffset/2.5-320
-      let transformValueRight = -1*(window.pageYOffset/2.5-320)
+  }else if(viewportWidth < 800){
+    if(window.pageYOffset >= 1900 && window.pageYOffset <= 2370){
+      let transformValueLeft = window.pageYOffset/2.5-760
+      let transformValueRight = -1*(window.pageYOffset/2.5-760)
       leftTxt.style.transform = "translateX(" + transformValueLeft + "px)";
       rightTxt.style.transform = "translateX(" + transformValueRight + "px)";
-    }else if(window.pageYOffset >= 850){
+    }else if(window.pageYOffset >= 2370){
       if(has_scrolled==false){
         show__txt()
         has_scrolled = true
@@ -125,14 +115,14 @@ const show__txt = () => {
 
 // Ham Menu Animation
 
-nav__list = document.querySelector('.nav__list')
+// nav__list = document.querySelector('.nav__list')
 
-ham__btn = document.querySelector('.toggle')
+// ham__btn = document.querySelector('.toggle')
 
-ham__btn.addEventListener('click', ()=>{
-  nav__list.classList.toggle('active')
-  ham__btn.classList.toggle('opened')
-})
+// ham__btn.addEventListener('click', ()=>{
+//   nav__list.classList.toggle('active')
+//   ham__btn.classList.toggle('opened')
+// })
 
 // Anime.js
 
