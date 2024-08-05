@@ -1,9 +1,0 @@
-<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" text-rendering="geometricPrecision" shape-rendering="geometricPrecision">
-
- <g>
-  <title>Layer 1</title>
-  <rect x="1.03578" y="0" id="svg_1" stroke-width="0" fill="#ff3b00" transform="matrix(0.965453 0 0 1.19375 10.182 261.89)" height="31.92474" width="300"/>
-  <rect x="0.89103" y="0" id="svg_2" stroke-width="0" fill="#ff3b00" transform="matrix(1.12229 0 0 0.966667 261.889 9.99995)" height="300" width="33.95775"/>
-  <rect x="0.70711" y="0.54971" id="svg_3" stroke-width="0" fill="#ff3b00" transform="matrix(0.707107 -0.707107 0.909567 0.909567 0 26.9478)" height="300" width="38.11"/>
- </g>
-</svg>
